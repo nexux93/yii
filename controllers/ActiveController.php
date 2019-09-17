@@ -20,7 +20,7 @@ public function actionView() {
     $activeItem = new Active();
     $activeItem->title = 'ABabinili';
 
-    return $this->render('view', [
+    return $this->render('view.twig', [
         'model' => $activeItem
     ]);
 }
