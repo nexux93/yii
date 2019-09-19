@@ -14,6 +14,7 @@ use yii\base\Controller;
 class ActiveController extends Controller
 {
 public function actionIndex() {
+    \Yii::$app->seo->setTitle('mordor');
     return 'ok';
 }
 public function actionView() {

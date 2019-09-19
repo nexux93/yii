@@ -16,6 +16,9 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'aQQO2tPJE120OPQKBHVDYxj43AK6N5JS',
         ],
+        'seo' => [
+          'class' => @app\components\Seo::class,
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -45,8 +48,9 @@ $config = [
                     ],
                     'globals' => [
                         'html' => ['class' => '\yii\helpers\Html'],
+                        'url' => ['class' => '\yii\helpers\Url']
                     ],
-                    'uses' => ['yii\bootstrap'],
+                    'uses' => ['yii\bootstrap4'],
                 ],
                 // ...
             ],
