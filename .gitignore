@@ -31,5 +31,4 @@ tests/_support/_generated
 
 #vagrant folder
 /.vagrant
-/models/Active.php
-/models/Day.php
+/package-lock.json
