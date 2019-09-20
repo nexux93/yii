@@ -17,27 +17,8 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'aQQO2tPJE120OPQKBHVDYxj43AK6N5JS',
         ],
-        'view' => [
-            'class' => 'yii\web\View',
-            'renderers' => [
-                'twig' => [
-                    'class' => 'yii\twig\ViewRenderer',
-                    'cachePath' => '@runtime/Twig/cache',
-                    // Array of twig options:
-                    'options' => [
-                        'auto_reload' => true,
-                    ],
-                    'globals' => [
-                        'html' => ['class' => '\yii\helpers\Html'],
-                        'active' => ['class', '\app\models\Active'],
-                        'userMessage' => ['class', '\app\models\UserMessage'],
-                        'url' => ['class' => '\yii\helpers\Url']
-
-                    ],
-                    'uses' => ['yii\bootstrap'],
-                ],
-                // ...
-            ],
+        'seo' => [
+          'class' => @app\components\Seo::class,
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -55,6 +36,25 @@ $config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
+        ],
+        'view' => [
+            'class' => 'yii\web\View',
+            'renderers' => [
+                'twig' => [
+                    'class' => 'yii\twig\ViewRenderer',
+                    'cachePath' => '@runtime/Twig/cache',
+                    // Array of twig options:
+                    'options' => [
+                        'auto_reload' => true,
+                    ],
+                    'globals' => [
+                        'html' => ['class' => '\yii\helpers\Html'],
+                        'url' => ['class' => '\yii\helpers\Url']
+                    ],
+                    'uses' => ['yii\bootstrap4'],
+                ],
+                // ...
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
