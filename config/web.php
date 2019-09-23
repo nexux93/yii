@@ -49,7 +49,7 @@ $config = [
                     ],
                     'globals' => [
                         'html' => ['class' => '\yii\helpers\Html'],
-                        'url' => ['class' => '\yii\helpers\Url']
+                        'url' => ['class' => '\yii\helpers\Url'],
                     ],
                     'uses' => ['yii\bootstrap4'],
                 ],
