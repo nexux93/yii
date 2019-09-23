@@ -1,0 +1,23 @@
+{# @var this \yii\web\View;model \app\models\Active #}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% set form = active_form_begin({
+                'action': 'submit'
+            }) %}
+            {{ form.field(model, 'email')| raw }}
+            {{ form.field(model, 'description').textarea | raw }}
+
+            {{ form.field(model, 'startDay').textinput({'type' : 'date'}) | raw }}
+            {{ form.field(model, 'endDay').textinput({'type' : 'date'}) | raw }}
+
+            {{ form.field(model, 'repeat').checkbox | raw }}
+            {{ form.field(model, 'blocked').checkbox | raw }}
+
+            {{ html.submitButton('Отправить', {'class': 'btn btn-success '})| raw }}
+
+            {{ active_form_end() }}
+        </div>
+    </div>
+</div>
