@@ -39,14 +39,15 @@ AppAsset::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right flex-row'],
             'items' => [
-                ['label' => 'Create', 'url' => ['/active/create']],
+                ['label' => 'Создать', 'url' => ['/active/create']],
+                ['label' => 'Список', 'url' => ['/active/index']],
                 Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Залогиниться', 'url' => ['/site/login']]
                 ) : (
                     '<li>'
                     . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
+                        'Разлогиниться (' . Yii::$app->user->identity->user_name . ')',
                         ['class' => 'btn btn-link logout']
                     )
                     . Html::endForm()

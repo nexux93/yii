@@ -13,9 +13,23 @@ use yii\helpers\VarDumper;
 
 class ActiveController extends Controller
 {
-    public function actionIndex()
+    public function actionIndex($sort = false)
     {
-        return 'ok';
+        if (\Yii::$app->user->isGuest()) {
+            return 'Tadada';
+
+        } else {
+            $query = Active::find();
+
+            if ($sort) {
+                $query->orderBy('is desc');
+            }
+            $rows = $query->all();
+
+            return $this->render('index.twig', [
+                'active' => $rows
+            ]);
+        }
     }
 
     public function actionView()
@@ -42,14 +56,21 @@ class ActiveController extends Controller
     {
         return 'Action@Delite';
     }
+
     public function actionSubmit()
     {
         $model = new Active();
+
         if ($model->load(\Yii::$app->request->post())) {
+
             if ($model->validate()) {
+
+                $model->save();
                 return 'Success' . VarDumper::export($model->attributes);
+
             } else {
-                return "Failed" . VarDumper::export($model ->errors);
+
+                return "Failed" . VarDumper::export($model->errors);
             }
         }
         return 'Active@Submit';

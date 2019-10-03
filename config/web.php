@@ -44,6 +44,7 @@ $config = [
                     'cachePath' => '@runtime/Twig/cache',
                     // Array of twig options:
                     'options' => [
+                        'debug' => YII_DEBUG,
                         'auto_reload' => true,
                     ],
                     'globals' => [

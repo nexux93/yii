@@ -1,22 +1,21 @@
 <?php
-/**
- * Модель событие
- * @package app\models
- *
- * @property-read User $user
- */
+
 
 namespace app\models;
 
 
-use yii\db\ActiveRecord;
+use yii\base\Model;
 
-class Active extends ActiveRecord
+class Active_old extends Model
 {
-  public static function tableName()
-  {
-      return 'yii2active';
-  }
+    public $title;
+    public $startDay;
+    public $endDay;
+    public $userId;
+    public $description;
+    public $email;
+    public $repeat = false;
+    public $blocked = false;
 
     public function rules()
     {
@@ -41,9 +40,5 @@ class Active extends ActiveRecord
         ];
     }
 
-    public function getUser()
-    {
-        return $this->hasOne(User::class, ['id' => 'user_id']);
-    }
 
 }
