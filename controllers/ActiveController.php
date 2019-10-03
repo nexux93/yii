@@ -9,27 +9,41 @@ namespace app\controllers;
 
 use app\models\Active;
 use yii\base\Controller;
+use yii\filters\AccessControl;
 use yii\helpers\VarDumper;
 
 class ActiveController extends Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['index', 'view', 'create'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex($sort = false)
     {
-        if (\Yii::$app->user->isGuest()) {
-            return 'Tadada';
 
-        } else {
-            $query = Active::find();
+        $query = Active::find();
 
-            if ($sort) {
-                $query->orderBy('is desc');
-            }
-            $rows = $query->all();
-
-            return $this->render('index.twig', [
-                'active' => $rows
-            ]);
+        if($sort) {
+            $query->orderBy('is desc');
         }
+        $rows = $query->all();
+
+        return $this->render('index.twig', [
+            'active' => $rows
+        ]);
     }
 
     public function actionView()
@@ -56,7 +70,6 @@ class ActiveController extends Controller
     {
         return 'Action@Delite';
     }
-
     public function actionSubmit()
     {
         $model = new Active();
@@ -70,7 +83,7 @@ class ActiveController extends Controller
 
             } else {
 
-                return "Failed" . VarDumper::export($model->errors);
+                return "Failed" . VarDumper::export($model ->errors);
             }
         }
         return 'Active@Submit';

@@ -56,6 +56,9 @@ $config = [
                 // ...
             ],
         ],
+        'authManager' => [
+            'class' => yii\rbac\DbManager::class
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
