@@ -22,10 +22,10 @@ class User extends ActiveRecord implements IdentityInterface
 {
 
 
-    public static function tableName()
-    {
-        return 'yii2user';
-    }
+//    public static function tableName()
+//    {
+//        return 'yii2user';
+//    }
     /**
      * Finds an identity by the given ID.
      * @param string|int $id the ID to be looked for

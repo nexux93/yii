@@ -13,10 +13,10 @@ use yii\db\ActiveRecord;
 
 class Active extends ActiveRecord
 {
-  public static function tableName()
-  {
-      return 'yii2active';
-  }
+//  public static function tableName()
+//  {
+//      return 'yii2active';
+//  }
 
     public function rules()
     {
@@ -41,9 +41,9 @@ class Active extends ActiveRecord
         ];
     }
 
-    public function getUser()
-    {
-        return $this->hasOne(User::class, ['id' => 'user_id']);
-    }
+//    public function getUser()
+//    {
+//        return $this->hasOne(User::class, ['id' => 'user_id']);
+//    }
 
 }

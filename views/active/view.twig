@@ -5,7 +5,8 @@
     @var model app\models\Active
     #}
 
-{{ use ('app\models\Active') }}
+{{ use ('app/models/Active') }}
+{{ use('yii/widgets') }}
 
 <div class="container">
 
@@ -23,8 +24,10 @@
         </div>
         <div class="row">
             <div class="col d-flex flex-column">
+                {{ detail_view_widget({
+                    'model' : model
+                }) }}
                 <span>Quest inform</span>
-                <span>test test est testtes testse tests setset</span>
             </div>
         </div>
         <div class="row">

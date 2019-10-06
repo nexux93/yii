@@ -6,10 +6,11 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
+    'language' => 'ru-RU', // <- здесь!
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
@@ -17,7 +18,7 @@ $config = [
             'cookieValidationKey' => 'aQQO2tPJE120OPQKBHVDYxj43AK6N5JS',
         ],
         'seo' => [
-          'class' => @app\components\Seo::class,
+            'class' => @app\components\Seo::class,
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -40,11 +41,12 @@ $config = [
             'class' => 'yii\web\View',
             'renderers' => [
                 'twig' => [
+
                     'class' => 'yii\twig\ViewRenderer',
                     'cachePath' => '@runtime/Twig/cache',
                     // Array of twig options:
                     'options' => [
-                        'debug' => YII_DEBUG,
+                        'debug' => true,
                         'auto_reload' => true,
                     ],
                     'globals' => [

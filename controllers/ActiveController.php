@@ -9,6 +9,7 @@ namespace app\controllers;
 
 use app\models\Active;
 use yii\base\Controller;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\helpers\VarDumper;
 
@@ -35,21 +36,21 @@ class ActiveController extends Controller
     {
 
         $query = Active::find();
-
-        if($sort) {
-            $query->orderBy('is desc');
-        }
-        $rows = $query->all();
+        $provider = new ActiveDataProvider([
+           'query' => $query
+        ]);
 
         return $this->render('index.twig', [
-            'active' => $rows
+            'provider' => $provider
         ]);
     }
 
     public function actionView()
     {
-        $activeItem = new Active();
-        $activeItem->title = 'ABabinili';
+
+        $id = \Yii::$app->request->get('id');
+        $activeItem = Active::findOne($id);
+
 
         return $this->render('view.twig', [
             'model' => $activeItem
@@ -70,6 +71,7 @@ class ActiveController extends Controller
     {
         return 'Action@Delite';
     }
+
     public function actionSubmit()
     {
         $model = new Active();
@@ -83,7 +85,7 @@ class ActiveController extends Controller
 
             } else {
 
-                return "Failed" . VarDumper::export($model ->errors);
+                return "Failed" . VarDumper::export($model->errors);
             }
         }
         return 'Active@Submit';

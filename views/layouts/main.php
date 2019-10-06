@@ -40,7 +40,7 @@ AppAsset::register($this);
             'options' => ['class' => 'navbar-nav navbar-right flex-row'],
             'items' => [
                 ['label' => 'Создать', 'url' => ['/active/create']],
-                ['label' => 'Список', 'url' => ['/active/index']],
+                ['label' => 'Список', 'url' => ['/active/view']],
                 Yii::$app->user->isGuest ? (
                 ['label' => 'Залогиниться', 'url' => ['/site/login']]
                 ) : (
