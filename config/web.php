@@ -41,17 +41,17 @@ $config = [
             'class' => 'yii\web\View',
             'renderers' => [
                 'twig' => [
-
                     'class' => 'yii\twig\ViewRenderer',
                     'cachePath' => '@runtime/Twig/cache',
                     // Array of twig options:
                     'options' => [
-                        'debug' => true,
+                        'debug' => YII_DEBUG,
                         'auto_reload' => true,
                     ],
                     'globals' => [
                         'html' => ['class' => '\yii\helpers\Html'],
                         'url' => ['class' => '\yii\helpers\Url'],
+                        'yii' => ['class'=> '\yii']
                     ],
                     'uses' => ['yii\bootstrap4'],
                 ],

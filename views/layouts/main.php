@@ -1,7 +1,9 @@
 <?php
 
-/* @var $this \yii\web\View */
-/* @var $content string */
+/* @var $this \yii\web\View
+ * @var $content string
+ * @var string user_name
+ */
 
 use app\widgets\Alert;
 use yii\helpers\Html;
@@ -40,7 +42,7 @@ AppAsset::register($this);
             'options' => ['class' => 'navbar-nav navbar-right flex-row'],
             'items' => [
                 ['label' => 'Создать', 'url' => ['/active/create']],
-                ['label' => 'Список', 'url' => ['/active/view']],
+                ['label' => 'Список', 'url' => ['/active/view?id=1']],
                 Yii::$app->user->isGuest ? (
                 ['label' => 'Залогиниться', 'url' => ['/site/login']]
                 ) : (
