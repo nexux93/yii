@@ -21,6 +21,7 @@ class m190920_184223_new_user_table extends Migration
             'accessToken' => Schema::TYPE_CHAR,
             'quest' => Schema::TYPE_INTEGER
         ]);
+
     }
 
     /**
