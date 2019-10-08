@@ -12,7 +12,7 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
-//    public $layout = 'main.twig';
+    public $layout = 'main.twig';
     /**
      * {@inheritdoc}
      */
@@ -125,5 +125,10 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionRegistration()
+    {
+        return $this->render('registration.twig');
     }
 }

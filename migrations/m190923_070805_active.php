@@ -2,7 +2,6 @@
 
 use yii\db\Migration;
 use yii\db\Schema;
-
 /**
  * Class m190923_070805_active
  */

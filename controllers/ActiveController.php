@@ -9,19 +9,48 @@ namespace app\controllers;
 
 use app\models\Active;
 use yii\base\Controller;
+use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\helpers\VarDumper;
 
 class ActiveController extends Controller
 {
-    public function actionIndex()
+
+    public function behaviors()
     {
-        return 'ok';
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['index', 'view', 'create'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    public function actionIndex($sort = false)
+    {
+
+        $query = Active::find();
+        $provider = new ActiveDataProvider([
+           'query' => $query
+        ]);
+
+        return $this->render('index.twig', [
+            'provider' => $provider
+        ]);
     }
 
     public function actionView()
     {
-        $activeItem = new Active();
-        $activeItem->title = 'ABabinili';
+
+        $id = \Yii::$app->request->get('id');
+        $activeItem = Active::findOne($id);
+
 
         return $this->render('view.twig', [
             'model' => $activeItem
@@ -42,14 +71,21 @@ class ActiveController extends Controller
     {
         return 'Action@Delite';
     }
+
     public function actionSubmit()
     {
         $model = new Active();
+
         if ($model->load(\Yii::$app->request->post())) {
+
             if ($model->validate()) {
+
+                $model->save();
                 return 'Success' . VarDumper::export($model->attributes);
+
             } else {
-                return "Failed" . VarDumper::export($model ->errors);
+
+                return "Failed" . VarDumper::export($model->errors);
             }
         }
         return 'Active@Submit';

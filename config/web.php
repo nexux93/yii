@@ -7,10 +7,11 @@ $config = [
     'id' => 'basic',
     'language' => 'ru-RU',
     'basePath' => dirname(__DIR__),
+    'language' => 'ru-RU', // <- здесь!
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
@@ -18,7 +19,7 @@ $config = [
             'cookieValidationKey' => 'aQQO2tPJE120OPQKBHVDYxj43AK6N5JS',
         ],
         'seo' => [
-          'class' => @app\components\Seo::class,
+            'class' => @app\components\Seo::class,
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -45,16 +46,21 @@ $config = [
                     'cachePath' => '@runtime/Twig/cache',
                     // Array of twig options:
                     'options' => [
+                        'debug' => YII_DEBUG,
                         'auto_reload' => true,
                     ],
                     'globals' => [
                         'html' => ['class' => '\yii\helpers\Html'],
                         'url' => ['class' => '\yii\helpers\Url'],
+                        'yii' => ['class'=> '\yii']
                     ],
                     'uses' => ['yii\bootstrap4'],
                 ],
                 // ...
             ],
+        ],
+        'authManager' => [
+            'class' => yii\rbac\DbManager::class
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

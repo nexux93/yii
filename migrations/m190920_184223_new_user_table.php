@@ -13,13 +13,15 @@ class m190920_184223_new_user_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('user', [
-            'id' => Schema::TYPE_PK,
-            'username' => Schema::TYPE_CHAR,
-            'password' => Schema::TYPE_CHAR,
-            'authKey' => Schema::TYPE_CHAR,
-            'accessToken' => Schema::TYPE_CHAR,
-            'quest' => Schema::TYPE_INTEGER
+        $this->createTable('yii2user', [
+            'user_id' => $this->primaryKey(),
+            'user_name' => $this->string()->notNull(),
+            'password_hash' => $this->string()->notNull(),
+            'auth_key' => $this->string()->notNull(),
+            'access_token' => $this->string()->notNull(),
+            'quest' => $this->string(),
+            'created_at' => $this->integer(),
+            'updated_at' => $this->integer()
         ]);
 
     }

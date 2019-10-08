@@ -1,7 +1,9 @@
 <?php
 
-/* @var $this \yii\web\View */
-/* @var $content string */
+/* @var $this \yii\web\View
+ * @var $content string
+ * @var string user_name
+ */
 
 use app\widgets\Alert;
 use yii\helpers\Html;
@@ -39,14 +41,15 @@ AppAsset::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right flex-row'],
             'items' => [
-                ['label' => 'Create', 'url' => ['/active/create']],
+                ['label' => 'Создать', 'url' => ['/active/create']],
+                ['label' => 'Список', 'url' => ['/active/view?id=1']],
                 Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Залогиниться', 'url' => ['/site/login']]
                 ) : (
                     '<li>'
                     . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
+                        'Разлогиниться (' . Yii::$app->user->identity->user_name . ')',
                         ['class' => 'btn btn-link logout']
                     )
                     . Html::endForm()
