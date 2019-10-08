@@ -12,6 +12,7 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    public $layout = 'main.twig';
     /**
      * {@inheritdoc}
      */
@@ -19,7 +20,7 @@ class SiteController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only' => ['logout'],
                 'rules' => [
                     [
@@ -61,7 +62,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index.twig');
     }
 
     /**
@@ -124,5 +125,10 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionRegistration()
+    {
+        return $this->render('registration.twig');
     }
 }

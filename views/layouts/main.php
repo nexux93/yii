@@ -1,7 +1,9 @@
 <?php
 
-/* @var $this \yii\web\View */
-/* @var $content string */
+/* @var $this \yii\web\View
+ * @var $content string
+ * @var string user_name
+ */
 
 use app\widgets\Alert;
 use yii\helpers\Html;
@@ -35,26 +37,28 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
+    try {
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right flex-row'],
+            'items' => [
+                ['label' => 'Создать', 'url' => ['/active/create']],
+                ['label' => 'Список', 'url' => ['/active/view?id=1']],
+                Yii::$app->user->isGuest ? (
+                ['label' => 'Залогиниться', 'url' => ['/site/login']]
+                ) : (
+                    '<li>'
+                    . Html::beginForm(['/site/logout'], 'post')
+                    . Html::submitButton(
+                        'Разлогиниться (' . Yii::$app->user->identity->user_name . ')',
+                        ['class' => 'btn btn-link logout']
+                    )
+                    . Html::endForm()
+                    . '</li>'
                 )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
+            ],
+        ]);
+    } catch (Exception $e) {
+    }
     NavBar::end();
     ?>
 

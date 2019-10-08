@@ -1,0 +1,13 @@
+{#@var yii\web\View $this#}
+{#@var app\models\Active model#}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% set form = active_form_begin() %}
+            {{ form.field(model, 'email')| raw }}
+            {{ form.field(model, 'content').textInput | raw }}
+
+            {{ active_form_end()}}
+        </div>
+    </div>
+</div>

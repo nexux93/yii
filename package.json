@@ -1,0 +1,47 @@
+{
+  "name": "yii",
+  "version": "1.0.0",
+  "description": "test webpack version ",
+  "private": true,
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "csv-loader": "^3.0.2",
+    "express": "^4.17.1",
+    "file-loader": "^4.2.0",
+    "grunt-webpack": "^3.1.3",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.40.2",
+    "webpack-bundle-analyzer": "^3.5.0",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-middleware": "^3.7.1",
+    "webpack-dev-server": "^3.8.1",
+    "webpack-manifest-plugin": "^2.0.4",
+    "webpack-merge": "^4.2.2",
+    "xml-loader": "^1.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --open",
+    "server": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nexux93/yii.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nexux93/yii/issues"
+  },
+  "homepage": "https://github.com/nexux93/yii#readme"
+}

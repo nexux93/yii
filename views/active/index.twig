@@ -1,0 +1,39 @@
+{# @var this \yii\web\View;active \app\models\Active[]  $active #}
+{# @var array #}
+{# @var \yii\db\ActiveRecord[] #}
+
+{{ use ('app/models/Active') }}
+{{ use ('yii/widgets') }}
+{{ use ('yii/grid') }}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Создать событие</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-default" href="/active/create">Создать</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ grid_view_widget({
+                'dataProvider': provider,
+                'columns': [
+                    {
+                        'class': '\\yii\\grid\\SerialColumn',
+                        'header': 'Пседво нумерация'
+                    },
+                    'activeId',
+                    'startDay:date',
+                    'endDay:date',
+                    'description',
+                    'email',
+                    'repeat:boolean',
+                    'blocked:boolean'
+                ]
+            }) }}
+        </div>
+    </div>
+</div>
